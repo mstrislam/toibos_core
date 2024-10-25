@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.views import View
-from django.views.generic import TemplateView
-# Create your views here.
+from django.views.generic import TemplateView, ListView
+from menu.models import ProductList
 
 class HomeView(TemplateView):
-	template_name = 'index.html'
+    template_name = 'index.html'
+
+
+class ProductDetailView(TemplateView):
+    template_name = 'product-inner.html'
+
 
 class ProductListView(TemplateView):
-	template_name = 'product.html'
-	def get_context_data(self, **kwargs):
-		context = {
-            'product': Product.objects.all(),
-        }
-		return context
+    template_name = 'product.html'
 
+class RecipesView(TemplateView):
+    template_name = 'recipes.html'
